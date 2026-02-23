@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Urban Bites</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+<style>
+    .menu_section {
+        margin-bottom: 3rem;
+        margin-top: 0.25rem;
+    }
+
+    .menu_items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .menu_item {
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid transparent;
+        border-radius: 10px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .menu_item:hover {
+        border-color: orangered;
+        box-shadow: 0 5px 15px rgba(255, 69, 0, 0.2);
+    }
+
+    .item_image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .item_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 0.5rem;
+    }
+
+    .item_name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .item_price {
+        font-size: 1.5rem;
+        color: orangered;
+        font-weight: 700;
+    }
+
+    .item_description {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .item_badges {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .badge {
+        background: orangered;
+        color: #fff;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .add_btn {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.7rem;
+        background: orangered;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .add_btn:hover {
+        background: #DC143C;
+        transform: translateY(-2px);
+    }
+
+    .quantity_controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        background: rgba(255, 107, 107, 0.1);
+        border: 2px solid orangered;
+        border-radius: 5px;
+        padding: 0.5rem;
+    }
+
+    .qty_btn {
+        background: orangered;
+        color: #fff;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        font-weight: bold;
+    }
+
+    .qty_btn:hover {
+        background: #DC143C;
+        transform: scale(1.1);
+    }
+
+    .qty_btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .qty_display {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: orangered;
+        min-width: 40px;
+        text-align: center;
+    }
+
+    .page_header {
+        padding: 4rem 0 2rem 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 50vh;
+    }
+
+    .cart_count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: orangered;
+        color: #fff;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .cart_icon {
+        position: relative;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="tomato-logo.svg" alt="Urban Bites Logo">
+                <span>Urban Bites</span>
+            </div>
+
+            <ul class="nav_items" id="nav_links">
+                <div class="item">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="menu.html">MENU</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </div>
+                
+                <div class="nav_actions">
+                    <button class="cart_icon" id="cart_btn">
+                        <i class="ri-shopping-cart-line"></i>
+                        <span class="cart_count">0</span>
+                    </button>
+                    <button class="btn">explore</button>
+                </div>
+            </ul>
+
+            <div class="nav_menu" id="menu_btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </nav>
+
+        <section class="page_header">
+            <h1 class="heading">Our <span>Menu</span></h1>
+            <p class="para">Discover our delicious food categories</p>
+        </section>
+    </header>
+
+    <!-- Menu Section -->
+    <section class="sec">
+        <!-- Burgers Category -->
+        <div class="menu_section">
+            <div class="head">
+                <h3 class="heading_1"><i class="ri-restaurant-2-line"></i> Burgers</h3>
+                <h1 class="heading">Premium <span>Burgers</span></h1>
+            </div>
+            <div class="menu_items">
+                <div class="menu_item" data-item-name="Classic Cheeseburger" data-price="399">
+                    <img src="img/cheeseburger.jpg" alt="Classic Cheeseburger" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Classic Cheeseburger</span>
+                        <span class="item_price">₹399</span>
+                    </div>
+                    <p class="item_description">Juicy beef patty with melted cheddar, lettuce, tomato, and special sauce</p>
+                    <div class="item_badges">
+                        <span class="badge">Popular</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Bacon Burger" data-price="449">
+                    <img src="img/bacon-burger.jpg" alt="Bacon Burger" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Bacon Burger</span>
+                        <span class="item_price">₹449</span>
+                    </div>
+                    <p class="item_description">Double patty with crispy bacon, cheese, onions, and BBQ sauce</p>
+                    <div class="item_badges">
+                        <span class="badge">Spicy</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Veggie Burger" data-price="349">
+                    <img src="img/veggie-burger.jpg" alt="Veggie Burger" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Veggie Burger</span>
+                        <span class="item_price">₹349</span>
+                    </div>
+                    <p class="item_description">Plant-based patty with fresh vegetables and special vegan mayo</p>
+                    <div class="item_badges">
+                        <span class="badge">Vegan</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza Category -->
+        <div class="menu_section">
+            <div class="head">
+                <h3 class="heading_1"><i class="ri-restaurant-line"></i> Pizzas</h3>
+                <h1 class="heading">Classic <span>Pizzas</span></h1>
+            </div>
+            <div class="menu_items">
+                <div class="menu_item" data-item-name="Margherita Pizza" data-price="349">
+                    <img src="img/margherita-pizza.jpg" alt="Margherita Pizza" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Margherita Pizza</span>
+                        <span class="item_price">₹349</span>
+                    </div>
+                    <p class="item_description">Fresh mozzarella, basil, tomato sauce on thin crust</p>
+                    <div class="item_badges">
+                        <span class="badge">Vegetarian</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Pepperoni Pizza" data-price="399">
+                    <img src="img/pepperoni-pizza.jpg" alt="Pepperoni Pizza" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Pepperoni Pizza</span>
+                        <span class="item_price">₹399</span>
+                    </div>
+                    <p class="item_description">Classic pepperoni with mozzarella on our signature pizza dough</p>
+                    <div class="item_badges">
+                        <span class="badge">Popular</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Meat Lovers Pizza" data-price="449">
+                    <img src="img/meat-lovers-pizza.jpg" alt="Meat Lovers Pizza" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Meat Lovers Pizza</span>
+                        <span class="item_price">₹449</span>
+                    </div>
+                    <p class="item_description">Pepperoni, sausage, bacon, and ham with extra cheese</p>
+                    <div class="item_badges">
+                        <span class="badge">Best Seller</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pasta Category -->
+        <div class="menu_section">
+            <div class="head">
+                <h3 class="heading_1"><i class="ri-kitchen-line"></i> Pastas</h3>
+                <h1 class="heading">Authentic <span>Pastas</span></h1>
+            </div>
+            <div class="menu_items">
+                <div class="menu_item" data-item-name="Spaghetti Carbonara" data-price="349">
+                    <img src="img/spaghetti-carbonara.jpg" alt="Spaghetti Carbonara" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Spaghetti Carbonara</span>
+                        <span class="item_price">₹349</span>
+                    </div>
+                    <p class="item_description">Creamy sauce with pancetta, eggs, and parmesan cheese</p>
+                    <div class="item_badges">
+                        <span class="badge">Italian</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Penne Arrabbiata" data-price="299">
+                    <img src="img/penne-arrabbiata.jpg" alt="Penne Arrabbiata" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Penne Arrabbiata</span>
+                        <span class="item_price">₹299</span>
+                    </div>
+                    <p class="item_description">Spicy tomato sauce with garlic and red chili peppers</p>
+                    <div class="item_badges">
+                        <span class="badge">Spicy</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Fettuccine Alfredo" data-price="349">
+                    <img src="img/fettuccine-alfredo.jpg" alt="Fettuccine Alfredo" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Fettuccine Alfredo</span>
+                        <span class="item_price">₹349</span>
+                    </div>
+                    <p class="item_description">Rich and creamy parmesan sauce with fettuccine pasta</p>
+                    <div class="item_badges">
+                        <span class="badge">Creamy</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salads Category -->
+        <div class="menu_section">
+            <div class="head">
+                <h3 class="heading_1"><i class="ri-leaf-line"></i> Salads</h3>
+                <h1 class="heading">Fresh <span>Salads</span></h1>
+            </div>
+            <div class="menu_items">
+                <div class="menu_item" data-item-name="Caesar Salad" data-price="249">
+                    <img src="img/caesar-salad.jpg" alt="Caesar Salad" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Caesar Salad</span>
+                        <span class="item_price">₹249</span>
+                    </div>
+                    <p class="item_description">Crisp romaine lettuce with parmesan and Caesar dressing</p>
+                    <div class="item_badges">
+                        <span class="badge">Light</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Greek Salad" data-price="269">
+                    <img src="img/greek-salad.jpg" alt="Greek Salad" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Greek Salad</span>
+                        <span class="item_price">₹269</span>
+                    </div>
+                    <p class="item_description">Tomatoes, cucumbers, feta cheese, olives, and olive oil dressing</p>
+                    <div class="item_badges">
+                        <span class="badge">Healthy</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Chicken Salad" data-price="299">
+                    <img src="img/chicken-salad.jpg" alt="Chicken Salad" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Chicken Salad</span>
+                        <span class="item_price">₹299</span>
+                    </div>
+                    <p class="item_description">Grilled chicken with mixed greens and balsamic vinaigrette</p>
+                    <div class="item_badges">
+                        <span class="badge">Protein</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desserts Category -->
+        <div class="menu_section">
+            <div class="head">
+                <h3 class="heading_1"><i class="ri-cake-2-line"></i> Desserts</h3>
+                <h1 class="heading">Sweet <span>Desserts</span></h1>
+            </div>
+            <div class="menu_items">
+                <div class="menu_item" data-item-name="Chocolate Cake" data-price="249">
+                    <img src="img/chocolate-cake.jpg" alt="Chocolate Cake" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Chocolate Cake</span>
+                        <span class="item_price">₹249</span>
+                    </div>
+                    <p class="item_description">Rich chocolate cake with creamy frosting and chocolate chips</p>
+                    <div class="item_badges">
+                        <span class="badge">Best Seller</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Cheesecake" data-price="299">
+                    <img src="img/cheesecake.jpg" alt="Cheesecake" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Cheesecake</span>
+                        <span class="item_price">₹299</span>
+                    </div>
+                    <p class="item_description">Creamy New York style cheesecake with strawberry topping</p>
+                    <div class="item_badges">
+                        <span class="badge">Popular</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Ice Cream" data-price="199">
+                    <img src="img/ice-cream.jpg" alt="Ice Cream" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Ice Cream</span>
+                        <span class="item_price">₹199</span>
+                    </div>
+                    <p class="item_description">Assorted flavors: vanilla, chocolate, strawberry, mint</p>
+                    <div class="item_badges">
+                        <span class="badge">Cool</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beverages Category -->
+        <div class="menu_section">
+            <div class="head">
+                <h3 class="heading_1"><i class="ri-cup-line"></i> Beverages</h3>
+                <h1 class="heading">Refreshing <span>Drinks</span></h1>
+            </div>
+            <div class="menu_items">
+                <div class="menu_item" data-item-name="Fresh Orange Juice" data-price="99">
+                    <img src="img/orange-juice.jpg" alt="Fresh Orange Juice" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Fresh Orange Juice</span>
+                        <span class="item_price">₹99</span>
+                    </div>
+                    <p class="item_description">Freshly squeezed orange juice, 100% natural</p>
+                    <div class="item_badges">
+                        <span class="badge">Fresh</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Iced Tea" data-price="79">
+                    <img src="img/iced-tea.jpg" alt="Iced Tea" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Iced Tea</span>
+                        <span class="item_price">₹79</span>
+                    </div>
+                    <p class="item_description">Cold refreshing iced tea with a hint of lemon</p>
+                    <div class="item_badges">
+                        <span class="badge">Healthy</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+
+                <div class="menu_item" data-item-name="Smoothie Blend" data-price="249">
+                    <img src="img/smoothie-blend.jpg" alt="Smoothie Blend" class="item_image">
+                    <div class="item_header">
+                        <span class="item_name">Smoothie Blend</span>
+                        <span class="item_price">₹249</span>
+                    </div>
+                    <p class="item_description">Mixed fruit smoothie with yogurt and honey</p>
+                    <div class="item_badges">
+                        <span class="badge">Healthy</span>
+                    </div>
+                    <div class="quantity_controls">
+                        <button class="qty_btn qty_minus">−</button>
+                        <span class="qty_display">0</span>
+                        <button class="qty_btn qty_plus">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- _________cart modal -->
+    <div id="cart_modal" class="cart_modal">
+        <div class="cart_modal_content">
+            <div class="cart_modal_header">
+                <h2>Shopping Cart</h2>
+                <button class="cart_close_btn" id="cart_close">&times;</button>
+            </div>
+            <div class="cart_modal_body" id="cart_body">
+                <!-- Cart items will be populated here -->
+            </div>
+            <div class="cart_modal_footer">
+                <div class="cart_summary">
+                    <span>Total Items:</span>
+                    <span id="total_items">0</span>
+                </div>
+                <div class="cart_summary">
+                    <span>Total Price:</span>
+                    <span id="total_price">₹0</span>
+                </div>
+                <button class="btn cart_checkout_btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="sec footer_container">
+
+            <div class="footer_col">
+                <div class="footer_logo logo">
+                    <img src="tomato-logo.svg" alt="Urban Bites Logo">
+                    <span>Urban Bites</span>
+                </div>
+                <p class="footer_text">
+                    Our job is to fill your tummy with delicious food and with fast and free delivery time.
+                </p>
+                <ul class="footer_socials">
+                    <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
+                    <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+                    <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer_col">
+                <h4>about</h4>
+                <ul class="footer_links">
+                    <li><a href="about.html">about us</a></li>
+                    <li><a href="#">features</a></li>
+                    <li><a href="#">news</a></li>
+                    <li><a href="menu.html">menu</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_col">
+                <h4>company</h4>
+                <ul class="footer_links">
+                    <li><a href="#">my Urban Bites</a></li>
+                    <li><a href="#">partner</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_col">
+                <h4>support</h4>
+                <ul class="footer_links">
+                    <li><a href="#">account</a></li>
+                    <li><a href="#">support center</a></li>
+                    <li><a href="#">feedback</a></li>
+                    <li><a href="contact.html">contact us</a></li>
+                    <li><a href="#">accessibility</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer_bar">
+            copyright @ 2025 Urban Bites. All right reserved.
+        </div>
+    </footer>
+
+    <span class="top" id="to-top"><i class="ri-arrow-up-circle-line"></i></span>
+    <script src="index.js"></script>
+    <script>
+        // Initialize cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+        let cartCount = 0;
+
+        // Get prices from menu data
+        const itemPrices = {
+            'Classic Cheeseburger': 399,
+            'Bacon Burger': 449,
+            'Veggie Burger': 349,
+            'Margherita Pizza': 349,
+            'Pepperoni Pizza': 399,
+            'Meat Lovers Pizza': 449,
+            'Spaghetti Carbonara': 349,
+            'Penne Arrabbiata': 299,
+            'Fettuccine Alfredo': 349,
+            'Caesar Salad': 249,
+            'Greek Salad': 269,
+            'Chicken Salad': 299,
+            'Chocolate Cake': 249,
+            'Cheesecake': 299,
+            'Ice Cream': 199,
+            'Fresh Orange Juice': 99,
+            'Iced Tea': 79,
+            'Smoothie Blend': 249
+        };
+
+        // Load quantities from cart on page load
+        function loadCartData() {
+            document.querySelectorAll('.menu_item').forEach(item => {
+                const itemName = item.dataset.itemName;
+                const qtyDisplay = item.querySelector('.qty_display');
+                if (cart[itemName]) {
+                    qtyDisplay.textContent = cart[itemName];
+                    cartCount += cart[itemName];
+                }
+            });
+            updateCartDisplay();
+        }
+
+        // Add to Cart button functionality with quantity controls
+        document.querySelectorAll('.menu_item').forEach(item => {
+            const itemName = item.dataset.itemName;
+            const price = item.dataset.price;
+            const minusBtn = item.querySelector('.qty_minus');
+            const plusBtn = item.querySelector('.qty_plus');
+            const qtyDisplay = item.querySelector('.qty_display');
+
+            // Plus button - increase quantity
+            plusBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                let currentQty = parseInt(qtyDisplay.textContent);
+                currentQty++;
+                qtyDisplay.textContent = currentQty;
+                cart[itemName] = currentQty;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+            });
+
+            // Minus button - decrease quantity
+            minusBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                let currentQty = parseInt(qtyDisplay.textContent);
+                if (currentQty > 0) {
+                    currentQty--;
+                    qtyDisplay.textContent = currentQty;
+                    if (currentQty === 0) {
+                        delete cart[itemName];
+                    } else {
+                        cart[itemName] = currentQty;
+                    }
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                }
+            });
+        });
+
+        // Calculate total cart count
+        function updateCartCount() {
+            cartCount = 0;
+            for (let item in cart) {
+                cartCount += cart[item];
+            }
+            updateCartDisplay();
+        }
+
+        // Update cart display across all pages
+        function updateCartDisplay() {
+            const cartCountElements = document.querySelectorAll('.cart_count');
+            cartCountElements.forEach(el => {
+                el.textContent = cartCount;
+                if (cartCount > 0) {
+                    el.style.display = 'flex';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+        }
+
+        // Display cart modal
+        function displayCartModal() {
+            const cartBody = document.getElementById('cart_body');
+            cartBody.innerHTML = '';
+
+            if (Object.keys(cart).length === 0) {
+                cartBody.innerHTML = '<div class="cart_empty">Your cart is empty</div>';
+                document.getElementById('total_items').textContent = '0';
+                document.getElementById('total_price').textContent = '₹0';
+                return;
+            }
+
+            let totalPrice = 0;
+            let totalItems = 0;
+
+            for (let itemName in cart) {
+                const quantity = cart[itemName];
+                const price = itemPrices[itemName] || 0;
+                const itemTotal = price * quantity;
+                totalPrice += itemTotal;
+                totalItems += quantity;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart_item';
+                cartItem.innerHTML = `
+                    <div class="cart_item_info">
+                        <div class="cart_item_name">${itemName}</div>
+                        <div class="cart_item_details">
+                            <span>Qty: <span class="cart_item_price">${quantity}</span></span>
+                            <span>Price: <span class="cart_item_price">₹${price}</span></span>
+                            <span>Total: <span class="cart_item_price">₹${itemTotal}</span></span>
+                        </div>
+                    </div>
+                    <button class="cart_item_remove" onclick="removeFromCart('${itemName}')">
+                        <i class="ri-delete-bin-line"></i> Remove
+                    </button>
+                `;
+                cartBody.appendChild(cartItem);
+            }
+
+            document.getElementById('total_items').textContent = totalItems;
+            document.getElementById('total_price').textContent = '₹' + totalPrice;
+        }
+
+        // Remove item from cart
+        function removeFromCart(itemName) {
+            delete cart[itemName];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update menu item quantity display
+            document.querySelectorAll('.menu_item').forEach(item => {
+                if (item.dataset.itemName === itemName) {
+                    item.querySelector('.qty_display').textContent = '0';
+                }
+            });
+            
+            updateCartCount();
+            displayCartModal();
+        }
+
+        // Cart modal functionality
+        const cartBtn = document.getElementById('cart_btn');
+        const cartModal = document.getElementById('cart_modal');
+        const cartClose = document.getElementById('cart_close');
+
+        if (cartBtn) {
+            cartBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                displayCartModal();
+                cartModal.classList.add('show');
+            });
+        }
+
+        if (cartClose) {
+            cartClose.addEventListener('click', () => {
+                cartModal.classList.remove('show');
+            });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target === cartModal) {
+                cartModal.classList.remove('show');
+            }
+        });
+
+        // Load cart data when page loads
+        loadCartData();
+    </script>
+</body>
+</html>

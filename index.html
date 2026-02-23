@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>restaurant web</title>
+    <title>Urban Bites - Fresh Food Delivery</title>
     <link rel="stylesheet" href="style.css">
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
@@ -14,20 +14,24 @@
     <header id="home">
         <nav class="navbar">
             <div class="logo">
-                <img src="C:\Users\utkar\Desktop\log.png" alt="">
-                <span>food in</span>
+                <img src="tomato-logo.svg" alt="Urban Bites Logo">
+                <span>Urban Bites</span>
             </div>
 
             <ul class="nav_items" id="nav_links">
                 <div class="item">
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#services">SERVICES</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="menu.html">MENU</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
                 </div>
                 
                 <div class="nav_actions">
-                    <a href="#" class="cart_icon"><i class="ri-shopping-cart-line"></i></a>
+                    <button class="cart_icon" id="cart_btn">
+                        <i class="ri-shopping-cart-line"></i>
+                        <span class="cart_count">0</span>
+                    </button>
                     <button class="btn">explore</button>
                 </div>
             </ul>
@@ -38,10 +42,10 @@
         </nav>
         <section class="main">
 
-            <h2 class="heading_1">welcome to fast food restaurant</h2>
+            <h2 class="heading_1">welcome to Our fast food restaurant</h2>
             <h1 class="heading">enjoy our <br>delicious meal</h1>
             <div class="main_btn">
-                <button class="btn btn1">explore more</button>
+                <a href="menu.html" class="btn btn1">explore more</a>
                 <button class="btn btn2"><i class="ri-play-circle-line"></i>watch video</button>
             </div>
         </section>
@@ -58,7 +62,7 @@
         <div class="boxes">
 
             <div class="box">
-                <img src="C:\Users\utkar\Desktop\pic1.png" alt="">
+                <img src="C:\Users\utkar\Desktop\easyorder2.png" alt="">
                 <h4>easy to order</h4>
                 <p>you only need a few steps in ordering food</p>
             </div>
@@ -68,7 +72,7 @@
                 <p>delivery that is always ontime even faster</p>
             </div>
             <div class="box">
-                <img src="C:\Users\utkar\Desktop\pic3.png" alt="">
+                <img src="C:\Users\utkar\Desktop\quality.png" alt="">
                 <h4>good quality</h4>
                 <p>not only fast for us quality is also number one</p>
             </div>
@@ -80,37 +84,36 @@
         <div class="head about_heading">
             <h3 class="heading_1">About us</h3>
             <h1 class="heading">what <span>our customer</span> <br>say about us</h1>
-            <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, corrupti molestiae, aperiam quo possimus dolorum eius ex dicta quam magnam expedita, facere ullam aut a eum voluptas eaque! Placeat, ab.</p>
+            <p class="para">Our customers have experienced exceptional service, delicious food, and lightning-fast delivery. Here are some of the amazing reviews from satisfied users who trust Urban Bites for their daily meals and special occasions.</p>
         </div>
 
         <div class="about_box">
 
             <div class="box1">
-                <img src="img/pic4.jpg" alt="">
                 <div class="box1_text">
-                    <p class="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <button class="btn btn1">explore more</button>
+                    <p class="para1">"Urban Bites has completely changed how I order food! The delivery is incredibly fast, and the food arrived hot and fresh. Highly recommended!"</p>
+                    <button class="btn btn1">⭐ 5 Stars</button>
                 </div>
             </div>
             <div class="box1">
                 <img src="img/pic5.jpg" alt="">
                 <div class="box1_text">
-                    <p class="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <button class="btn btn1">explore more</button>
+                    <p class="para1">"Great selection of restaurants and affordable prices! The app is so easy to use, and the customer service team is always helpful."</p>
+                    <button class="btn btn1">⭐ 4 Stars</button>
                 </div>
             </div>
             <div class="box1">
                 <img src="img/pic6.jpg" alt="">
                 <div class="box1_text">
-                    <p class="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <button class="btn btn1">explore more</button>
+                    <p class="para1">"I've been ordering from Urban Bites for months now. The quality of food is consistently excellent and delivery is always on time."</p>
+                    <button class="btn btn1">⭐ 3.9 Stars</button>
                 </div>
             </div>
             <div class="box1">
                 <img src="img/pic7.jpg" alt="">
                 <div class="box1_text">
-                    <p class="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <button class="btn btn1">explore more</button>
+                    <p class="para1">"Best food delivery service in the city! The variety is amazing, prices are reasonable, and the whole experience is seamless."</p>
+                    <button class="btn btn1">⭐ 4.2 Stars</button>
                 </div>
             </div>
             
@@ -122,7 +125,6 @@
             <div class="left_box">
                 <h2 class="heading_1">Download app</h2>
                 <h1 class="heading">Get started with food in today!</h1>
-                <p class="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet deserunt esse delectus magnam et minus consectetur ullam consequuntur placeat, minima architecto aliquam error nisi aliquid sequi tempore consequatur nemo optio?</p>
                 <button class="btn btn1">Get the app</button>
             </div>
             <div class="right_box">
@@ -130,14 +132,39 @@
             </div>
         </div>
        </section>
+       
+       <!-- _________cart modal -->
+       <div id="cart_modal" class="cart_modal">
+           <div class="cart_modal_content">
+               <div class="cart_modal_header">
+                   <h2>Shopping Cart</h2>
+                   <button class="cart_close_btn" id="cart_close">&times;</button>
+               </div>
+               <div class="cart_modal_body" id="cart_body">
+                   <!-- Cart items will be populated here -->
+               </div>
+               <div class="cart_modal_footer">
+                   <div class="cart_summary">
+                       <span>Total Items:</span>
+                       <span id="total_items">0</span>
+                   </div>
+                   <div class="cart_summary">
+                       <span>Total Price:</span>
+                       <span id="total_price">₹0</span>
+                   </div>
+                   <button class="btn cart_checkout_btn">Proceed to Checkout</button>
+               </div>
+           </div>
+       </div>
+       
        <!-- _________footer -->
         <footer>
             <div class="sec footer_container">
 
                 <div class="footer_col">
                     <div class="footer_logo logo">
-                        <img src="img/log.png" alt="">
-                        <span>food in</span>
+                        <img src="tomato-logo.svg" alt="Urban Bites Logo">
+                        <span>Urban Bites</span>
                     </div>
                     <p class="footer_text">
                         our job is to fill your tummy with delicious food and with fast and free delivery time.
@@ -152,17 +179,17 @@
                 <div class="footer_col">
                     <h4>about</h4>
                     <ul class="footer_links">
-                        <li><a href="#">about us</a></li>
+                        <li><a href="about.html">about us</a></li>
                         <li><a href="#">features</a></li>
                         <li><a href="#">news</a></li>
-                        <li><a href="#">menu</a></li>
+                        <li><a href="menu.html">menu</a></li>
                     </ul>
                 </div>
 
                 <div class="footer_col">
                     <h4>company</h4>
                     <ul class="footer_links">
-                        <li><a href="#">my food in</a></li>
+                        <li><a href="#">my Urban Bites</a></li>
                         <li><a href="#">partner</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">blog</a></li>
@@ -175,17 +202,147 @@
                         <li><a href="#">account</a></li>
                         <li><a href="#">support center</a></li>
                         <li><a href="#">feedback</a></li>
-                        <li><a href="#">contact us</a></li>
+                        <li><a href="contact.html">contact us</a></li>
                         <li><a href="#">accessibility</a></li>
                     </ul>
                 </div>
 
             </div>
             <div class="footer_bar">
-                copyright @ 2024 Blaze Foods. All right reserved.
+                copyright @ 2025 Urban Bites. All right reserved.
             </div>
         </footer>
         <span class="top" id="to-top"><i class="ri-arrow-up-circle-line"></i></span>
     <script src="index.js"></script>
+    <script>
+        // Load and display cart count from localStorage on all pages
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+        let cartCount = 0;
+
+        // Calculate total cart count
+        function calculateCartCount() {
+            cartCount = 0;
+            for (let item in cart) {
+                cartCount += cart[item];
+            }
+            updateCartDisplay();
+        }
+
+        // Update cart display across all pages
+        function updateCartDisplay() {
+            const cartCountElements = document.querySelectorAll('.cart_count');
+            cartCountElements.forEach(el => {
+                el.textContent = cartCount;
+                if (cartCount > 0) {
+                    el.style.display = 'flex';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+        }
+
+        // Get prices from menu data - fallback prices
+        const itemPrices = {
+            'Classic Cheeseburger': 399,
+            'Bacon Burger': 449,
+            'Veggie Burger': 349,
+            'Margherita Pizza': 349,
+            'Pepperoni Pizza': 399,
+            'Meat Lovers Pizza': 449,
+            'Spaghetti Carbonara': 349,
+            'Penne Arrabbiata': 299,
+            'Fettuccine Alfredo': 349,
+            'Caesar Salad': 249,
+            'Greek Salad': 269,
+            'Chicken Salad': 299,
+            'Chocolate Cake': 249,
+            'Cheesecake': 299,
+            'Ice Cream': 199,
+            'Fresh Orange Juice': 99,
+            'Iced Tea': 79,
+            'Smoothie Blend': 249
+        };
+
+        // Display cart modal
+        function displayCartModal() {
+            const cartBody = document.getElementById('cart_body');
+            cartBody.innerHTML = '';
+
+            if (Object.keys(cart).length === 0) {
+                cartBody.innerHTML = '<div class="cart_empty">Your cart is empty</div>';
+                document.getElementById('total_items').textContent = '0';
+                document.getElementById('total_price').textContent = '₹0';
+                return;
+            }
+
+            let totalPrice = 0;
+            let totalItems = 0;
+
+            for (let itemName in cart) {
+                const quantity = cart[itemName];
+                const price = itemPrices[itemName] || 0;
+                const itemTotal = price * quantity;
+                totalPrice += itemTotal;
+                totalItems += quantity;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart_item';
+                cartItem.innerHTML = `
+                    <div class="cart_item_info">
+                        <div class="cart_item_name">${itemName}</div>
+                        <div class="cart_item_details">
+                            <span>Qty: <span class="cart_item_price">${quantity}</span></span>
+                            <span>Price: <span class="cart_item_price">₹${price}</span></span>
+                            <span>Total: <span class="cart_item_price">₹${itemTotal}</span></span>
+                        </div>
+                    </div>
+                    <button class="cart_item_remove" onclick="removeFromCart('${itemName}')">
+                        <i class="ri-delete-bin-line"></i> Remove
+                    </button>
+                `;
+                cartBody.appendChild(cartItem);
+            }
+
+            document.getElementById('total_items').textContent = totalItems;
+            document.getElementById('total_price').textContent = '₹' + totalPrice;
+        }
+
+        // Remove item from cart
+        function removeFromCart(itemName) {
+            delete cart[itemName];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            calculateCartCount();
+            displayCartModal();
+        }
+
+        // Cart modal functionality
+        const cartBtn = document.getElementById('cart_btn');
+        const cartModal = document.getElementById('cart_modal');
+        const cartClose = document.getElementById('cart_close');
+
+        if (cartBtn) {
+            cartBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                displayCartModal();
+                cartModal.classList.add('show');
+            });
+        }
+
+        if (cartClose) {
+            cartClose.addEventListener('click', () => {
+                cartModal.classList.remove('show');
+            });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target === cartModal) {
+                cartModal.classList.remove('show');
+            }
+        });
+
+        // Initialize on page load
+        calculateCartCount();
+    </script>
 </body>
 </html>
