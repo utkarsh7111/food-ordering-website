@@ -1,53 +1,72 @@
-// navbar Scroll
-window.addEventListener('scroll', function(){
-    let navbar = document.querySelector('.navbar');
-    if(this.window.scrollY > 20){
-        navbar.classList.add('scrolled')
-    }else{
-        navbar.classList.remove('scrolled')
+/**
+ * Main JavaScript File
+ * This file handles navigation bar scroll effects and mobile menu toggle
+ */
+
+// ========== NAVBAR SCROLL EFFECT ==========
+// Changes navbar background when user scrolls down
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    
+    // Add dark background when scrolled past 20px
+    if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
     }
 });
 
 
-//Scroll up
-document.querySelector('#to-top').addEventListener('click',()=>{
-
-    let TopInterval = setInterval(()=>{
-      
-        let ArrowTop = document.body.scrollTop > 0 ? document.body : document.documentElement;
-
-        if(ArrowTop.scrollTop > 0){
-            ArrowTop.scrollTop = ArrowTop.scrollTop - 50;
+// ========== SCROLL TO TOP BUTTON ==========
+// Smoothly scrolls page to top when button is clicked
+document.querySelector('#to-top').addEventListener('click', function() {
+    // Smooth scroll animation
+    const scrollInterval = setInterval(function() {
+        // Get the element that has scrollTop (body or documentElement)
+        const scrollElement = document.body.scrollTop > 0 ? document.body : document.documentElement;
+        
+        // Scroll up by 50px each step
+        if (scrollElement.scrollTop > 0) {
+            scrollElement.scrollTop = scrollElement.scrollTop - 50;
         }
-        if(ArrowTop.scrollTop < 1){
-            clearInterval(TopInterval)
+        
+        // Stop scrolling when we reach the top
+        if (scrollElement.scrollTop < 1) {
+            clearInterval(scrollInterval);
         }
-    },10)
-}, false);
+    }, 10);
+});
 
 
-function showscroll(){
-    let TopButton = document.getElementById('to-top');
-    if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100){
-        TopButton.classList.add('show')
-    }else{
-        TopButton.classList.remove('show')
+// ========== SHOW/HIDE SCROLL BUTTON ==========
+// Shows the scroll-to-top button after scrolling down 100px
+function showScrollButton() {
+    const topButton = document.getElementById('to-top');
+    
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        topButton.classList.add('show');
+    } else {
+        topButton.classList.remove('show');
     }
 }
 
-window.onscroll = () =>{
-    showscroll();
-}
+// Check scroll position whenever user scrolls
+window.onscroll = function() {
+    showScrollButton();
+};
 
-// navbar toggle
 
-const menuBtn = document.getElementById('menu_btn')
-const navLinks = document.getElementById('nav_links')
-const menuIcon = document.querySelector('i');
+// ========== MOBILE MENU TOGGLE ==========
+// Opens and closes the navigation menu on mobile devices
+const menuBtn = document.getElementById('menu_btn');
+const navLinks = document.getElementById('nav_links');
+const menuIcon = menuBtn.querySelector('i');
 
-menuBtn.addEventListener('click',(e)=>{
-    navLinks.classList.toggle('open')
-
-    const isOpen = navLinks.classList.contains('open')
-    menuIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line')
-})
+menuBtn.addEventListener('click', function() {
+    // Toggle the 'open' class on navigation
+    navLinks.classList.toggle('open');
+    
+    // Change icon based on menu state (hamburger or X)
+    const isOpen = navLinks.classList.contains('open');
+    menuIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
+});

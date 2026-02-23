@@ -653,3 +653,206 @@ header{
         width: 90%;
     }
 }
+
+/* ========== Menu Page Styles ========== */
+.menu_section {
+    margin-bottom: 3rem;
+    margin-top: 0.25rem;
+}
+
+.menu_items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.menu_item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.menu_item:hover {
+    border-color: orangered;
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.2);
+}
+
+.item_image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.item_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 0.5rem;
+}
+
+.item_name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.item_price {
+    font-size: 1.5rem;
+    color: orangered;
+    font-weight: 700;
+}
+
+.item_description {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.item_badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: orangered;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.quantity_controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    background: rgba(255, 107, 107, 0.1);
+    border: 2px solid orangered;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.qty_btn {
+    background: orangered;
+    color: #fff;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.qty_btn:hover {
+    background: #DC143C;
+    transform: scale(1.1);
+}
+
+.qty_btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.qty_display {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: orangered;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* ========== Contact Page Styles ========== */
+.contact_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 2rem 0;
+}
+
+.contact_info h2 {
+    margin-bottom: 1rem;
+}
+
+.contact_info .para1 {
+    margin-bottom: 2rem;
+}
+
+.contact_details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail_box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.detail_box h4 {
+    color: #fff;
+    margin-bottom: 0.3rem;
+}
+
+.detail_box p {
+    color: #888;
+}
+
+.contact_form {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.contact_form:hover {
+    border-color: orangered;
+}
+
+.contact_form h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.form_group {
+    margin-bottom: 1rem;
+}
+
+.form_group input,
+.form_group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form_group input:focus,
+.form_group textarea:focus {
+    border-color: orangered;
+    outline: none;
+}
+
+@media only screen and (max-width:850px) {
+    .contact_content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

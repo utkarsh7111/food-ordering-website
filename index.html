@@ -60,19 +60,18 @@
         </div>
 
         <div class="boxes">
-
             <div class="box">
-                <img src="C:\Users\utkar\Desktop\easyorder2.png" alt="">
+                <i class="ri-shopping-cart-line" style="font-size: 4em; color: orangered;"></i>
                 <h4>easy to order</h4>
                 <p>you only need a few steps in ordering food</p>
             </div>
             <div class="box">
-                <img src="C:\Users\utkar\Desktop\pic2.png" alt="">
+                <i class="ri-truck-line" style="font-size: 4em; color: orangered;"></i>
                 <h4>fastest delivery</h4>
                 <p>delivery that is always ontime even faster</p>
             </div>
             <div class="box">
-                <img src="C:\Users\utkar\Desktop\quality.png" alt="">
+                <i class="ri-award-line" style="font-size: 4em; color: orangered;"></i>
                 <h4>good quality</h4>
                 <p>not only fast for us quality is also number one</p>
             </div>
@@ -88,35 +87,34 @@
         </div>
 
         <div class="about_box">
-
             <div class="box1">
+                <i class="ri-user-star-line" style="font-size: 4em; color: orangered; padding: 1rem;"></i>
                 <div class="box1_text">
-                    <p class="para1">"Urban Bites has completely changed how I order food! The delivery is incredibly fast, and the food arrived hot and fresh. Highly recommended!"</p>
+                    <p class="para1">"Urban Bites has completely changed how I order food! The delivery is incredibly fast, and the food arrived hot and fresh."</p>
                     <button class="btn btn1">⭐ 5 Stars</button>
                 </div>
             </div>
             <div class="box1">
-                <img src="img/pic5.jpg" alt="">
+                <i class="ri-emotion-happy-line" style="font-size: 4em; color: orangered; padding: 1rem;"></i>
                 <div class="box1_text">
-                    <p class="para1">"Great selection of restaurants and affordable prices! The app is so easy to use, and the customer service team is always helpful."</p>
+                    <p class="para1">"Great selection of restaurants and affordable prices! The app is so easy to use, and the customer service team is helpful."</p>
                     <button class="btn btn1">⭐ 4 Stars</button>
                 </div>
             </div>
             <div class="box1">
-                <img src="img/pic6.jpg" alt="">
+                <i class="ri-heart-line" style="font-size: 4em; color: orangered; padding: 1rem;"></i>
                 <div class="box1_text">
-                    <p class="para1">"I've been ordering from Urban Bites for months now. The quality of food is consistently excellent and delivery is always on time."</p>
+                    <p class="para1">"I've been ordering from Urban Bites for months. The quality of food is consistently excellent and delivery is always on time."</p>
                     <button class="btn btn1">⭐ 3.9 Stars</button>
                 </div>
             </div>
             <div class="box1">
-                <img src="img/pic7.jpg" alt="">
+                <i class="ri-thumb-up-line" style="font-size: 4em; color: orangered; padding: 1rem;"></i>
                 <div class="box1_text">
-                    <p class="para1">"Best food delivery service in the city! The variety is amazing, prices are reasonable, and the whole experience is seamless."</p>
+                    <p class="para1">"Best food delivery service in the city! The variety is amazing, prices are reasonable, and the experience is seamless."</p>
                     <button class="btn btn1">⭐ 4.2 Stars</button>
                 </div>
             </div>
-            
         </div>
       </section>
       <!-- _________contact -->
@@ -128,7 +126,7 @@
                 <button class="btn btn1">Get the app</button>
             </div>
             <div class="right_box">
-                <img src="img/right.png" alt="">
+                <i class="ri-smartphone-line" style="font-size: 15em; color: orangered;"></i>
             </div>
         </div>
        </section>
@@ -213,136 +211,9 @@
             </div>
         </footer>
         <span class="top" id="to-top"><i class="ri-arrow-up-circle-line"></i></span>
+    
+    <!-- JavaScript Files -->
     <script src="index.js"></script>
-    <script>
-        // Load and display cart count from localStorage on all pages
-        let cart = JSON.parse(localStorage.getItem('cart')) || {};
-        let cartCount = 0;
-
-        // Calculate total cart count
-        function calculateCartCount() {
-            cartCount = 0;
-            for (let item in cart) {
-                cartCount += cart[item];
-            }
-            updateCartDisplay();
-        }
-
-        // Update cart display across all pages
-        function updateCartDisplay() {
-            const cartCountElements = document.querySelectorAll('.cart_count');
-            cartCountElements.forEach(el => {
-                el.textContent = cartCount;
-                if (cartCount > 0) {
-                    el.style.display = 'flex';
-                } else {
-                    el.style.display = 'none';
-                }
-            });
-        }
-
-        // Get prices from menu data - fallback prices
-        const itemPrices = {
-            'Classic Cheeseburger': 399,
-            'Bacon Burger': 449,
-            'Veggie Burger': 349,
-            'Margherita Pizza': 349,
-            'Pepperoni Pizza': 399,
-            'Meat Lovers Pizza': 449,
-            'Spaghetti Carbonara': 349,
-            'Penne Arrabbiata': 299,
-            'Fettuccine Alfredo': 349,
-            'Caesar Salad': 249,
-            'Greek Salad': 269,
-            'Chicken Salad': 299,
-            'Chocolate Cake': 249,
-            'Cheesecake': 299,
-            'Ice Cream': 199,
-            'Fresh Orange Juice': 99,
-            'Iced Tea': 79,
-            'Smoothie Blend': 249
-        };
-
-        // Display cart modal
-        function displayCartModal() {
-            const cartBody = document.getElementById('cart_body');
-            cartBody.innerHTML = '';
-
-            if (Object.keys(cart).length === 0) {
-                cartBody.innerHTML = '<div class="cart_empty">Your cart is empty</div>';
-                document.getElementById('total_items').textContent = '0';
-                document.getElementById('total_price').textContent = '₹0';
-                return;
-            }
-
-            let totalPrice = 0;
-            let totalItems = 0;
-
-            for (let itemName in cart) {
-                const quantity = cart[itemName];
-                const price = itemPrices[itemName] || 0;
-                const itemTotal = price * quantity;
-                totalPrice += itemTotal;
-                totalItems += quantity;
-
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart_item';
-                cartItem.innerHTML = `
-                    <div class="cart_item_info">
-                        <div class="cart_item_name">${itemName}</div>
-                        <div class="cart_item_details">
-                            <span>Qty: <span class="cart_item_price">${quantity}</span></span>
-                            <span>Price: <span class="cart_item_price">₹${price}</span></span>
-                            <span>Total: <span class="cart_item_price">₹${itemTotal}</span></span>
-                        </div>
-                    </div>
-                    <button class="cart_item_remove" onclick="removeFromCart('${itemName}')">
-                        <i class="ri-delete-bin-line"></i> Remove
-                    </button>
-                `;
-                cartBody.appendChild(cartItem);
-            }
-
-            document.getElementById('total_items').textContent = totalItems;
-            document.getElementById('total_price').textContent = '₹' + totalPrice;
-        }
-
-        // Remove item from cart
-        function removeFromCart(itemName) {
-            delete cart[itemName];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            calculateCartCount();
-            displayCartModal();
-        }
-
-        // Cart modal functionality
-        const cartBtn = document.getElementById('cart_btn');
-        const cartModal = document.getElementById('cart_modal');
-        const cartClose = document.getElementById('cart_close');
-
-        if (cartBtn) {
-            cartBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                displayCartModal();
-                cartModal.classList.add('show');
-            });
-        }
-
-        if (cartClose) {
-            cartClose.addEventListener('click', () => {
-                cartModal.classList.remove('show');
-            });
-        }
-
-        // Close modal when clicking outside
-        window.addEventListener('click', (event) => {
-            if (event.target === cartModal) {
-                cartModal.classList.remove('show');
-            }
-        });
-
-        // Initialize on page load
-        calculateCartCount();
-    </script>
+    <script src="cart.js"></script>
 </body>
 </html>
