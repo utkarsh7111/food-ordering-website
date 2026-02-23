@@ -33,6 +33,7 @@ const itemPrices = {
  * Calculate total items in cart
  */
 function calculateCartCount() {
+    cart = JSON.parse(localStorage.getItem('cart')) || {};
     cartCount = 0;
     for (let item in cart) {
         cartCount += cart[item];
